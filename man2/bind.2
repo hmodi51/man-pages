@@ -128,6 +128,24 @@ and for
 see
 .BR netlink (7).
 .PP
+For sockets in the Internet domain (such as
+.BR AF_INET
+or
+.BR AF_INET6 ),
+the
+.I addr
+pointer is often obtained via a call to
+.BR getaddrinfo (3),
+which returns a linked list of
+.I struct addrinfo
+structures. Each node contains a pointer to a socket address suitable for passing to
+.BR bind ().
+This is the modern, protocol-independent way to obtain socket address structures for both IPv4 and IPv6, and is generally preferred over manually constructing
+.IR sockaddr_in
+or
+.IR sockaddr_in6
+structures.
+.PP
 The actual structure passed for the
 .I addr
 argument will depend on the address family.
